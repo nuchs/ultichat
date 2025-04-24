@@ -1,6 +1,9 @@
 run:
 	go run ./cmds/cap | go run ./cmds/logfmt
 
+chat:
+	go run ./cmds/chatapp | go run ./cmds/logfmt
+
 test:
 	go test ./...
 

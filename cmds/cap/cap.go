@@ -33,7 +33,8 @@ func run(ctx context.Context, logger *slog.Logger) error {
 
 	server := NewServer(ctx, logger)
 	go shutdown(ctx, logger, server)
-	if err := server.ListenAndServe(); err != nil {
+	logger.Info("I'm listening", "addr", server.Addr)
+	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		return err
 	}
 
